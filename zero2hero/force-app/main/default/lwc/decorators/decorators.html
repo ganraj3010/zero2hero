@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Decorators">
+        <div class="slds-var-m-around_medium">
+            <lightning-input label="City" onchange={handleCityChange}></lightning-input>
+            <strong>With @track</strong> <p>My City is {addres.city}</p>
+            <lightning-input label="City" onchange={handleCityChange2}></lightning-input>
+            <strong>Without @track</strong> <p>My City is {addres2.city}</p>
+            <lightning-input label="City" onchange={handleCityChange3}></lightning-input>
+            <strong>Without @track with sprade Operator</strong> <p>My City is {addres3.city}</p>
+        </div>
+    </lightning-card>
+</template>

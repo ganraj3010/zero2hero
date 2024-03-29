@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="getterDemo">
+        <div class="slds-var-m-around_medium">
+            <lightning-input label="Number 1" onchange={handelnum1} type="number"></lightning-input>
+            <div  class="slds-var-p-around_small slds-align_absolute-center">
+                <lightning-button-icon icon-name="utility:add" alternative-text="add" title="add" value="add"
+                    onclick={handelOperator}></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:dash" alternative-text="Minus" class="slds-m-left_xx-small"
+                    title="minus" value="minus" onclick={handelOperator}></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:close" alternative-text="Multiply"
+                    class="slds-m-left_xx-small" title="Multiply" value="Multiply"
+                    onclick={handelOperator}></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:italic" alternative-text="devide" class="slds-m-left_xx-small"
+                    title="divided" value="divided" onclick={handelOperator}></lightning-button-icon>
+            </div>
+
+            <lightning-input label="Number 2" onchange={handelnum2} type="number"></lightning-input>
+            <p class="slds-var-p-around_medium"> <strong>{total}</strong></p>
+        </div>
+    </lightning-card>
+</template>

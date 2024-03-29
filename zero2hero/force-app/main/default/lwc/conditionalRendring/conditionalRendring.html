@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Condtinal Rendering">
+        <div class="slds-var-m-around_medium">
+            <template if:false={block}>
+                <lightning-button variant="brand" label="Show Block" title="Toggel" onclick={toggelBlock}></lightning-button>
+            </template>
+            <template if:true={block}>
+                <lightning-button variant="brand" label="Hide Block" title="Toggel" onclick={toggelBlock}></lightning-button>
+                <div style="background-color: red; height:100px"></div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
