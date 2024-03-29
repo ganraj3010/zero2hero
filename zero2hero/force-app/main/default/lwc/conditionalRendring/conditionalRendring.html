@@ -1,6 +1,9 @@
 <template>
     <lightning-card title="Condtinal Rendering">
         <div class="slds-var-m-around_medium">
+            In Spring 23 Salesforce has announced the new improved Conditional Directives lwc:if, lwc:elseif and lwc:else
+            Old directives will not go away anywhere soon but in future they will be depreciated by the salesforce
+            https://help.salesforce.com/s/articleView?id=release-notes.rn_lwc_if_else.htm&type=5&release=242
             <template if:false={block}>
                 <lightning-button variant="brand" label="Show Block" title="Toggel" onclick={toggelBlock}></lightning-button>
             </template>
