@@ -1,16 +1,45 @@
 <template>
     <lightning-card title="Condtinal Rendering">
         <div class="slds-var-m-around_medium">
-            In Spring 23 Salesforce has announced the new improved Conditional Directives lwc:if, lwc:elseif and lwc:else
-            Old directives will not go away anywhere soon but in future they will be depreciated by the salesforce
-            https://help.salesforce.com/s/articleView?id=release-notes.rn_lwc_if_else.htm&type=5&release=242
             <template if:false={block}>
-                <lightning-button variant="brand" label="Show Block" title="Toggel" onclick={toggelBlock}></lightning-button>
+                <lightning-button variant="brand" label="Show Block" title="Toggel"
+                    onclick={toggelBlock}></lightning-button>
             </template>
             <template if:true={block}>
-                <lightning-button variant="brand" label="Hide Block" title="Toggel" onclick={toggelBlock}></lightning-button>
+                <lightning-button variant="brand" label="Hide Block" title="Toggel"
+                    onclick={toggelBlock}></lightning-button>
                 <div style="background-color: red; height:100px"></div>
             </template>
         </div>
     </lightning-card>
+    <lightning-card title="Condtinal Rendering: In Spring 23">
+        <div class="slds-var-m-around_medium">
+            <div>
+                In Spring 23 Salesforce has announced the new improved Conditional Directives lwc:if, lwc:elseif and
+                lwc:else
+                Old directives will not go away anywhere soon but in future they will be depreciated by the salesforce
+                https://help.salesforce.com/s/articleView?id=release-notes.rn_lwc_if_else.htm&type=5&release=242
+            </div>
+            <lightning-button variant="brand" label="if Block" title="Toggel" 
+                onclick={toggelBlock2} class="slds-var-p-around_xxx-small"></lightning-button>
+            <lightning-button variant="brand" label="else If block" title="Toggel"
+                onclick={toggelBlock3}  class="slds-var-p-around_xxx-small"></lightning-button>
+            <lightning-button variant="brand" label="else" title="Toggel" 
+                onclick={toggelBlock4}  class="slds-var-p-around_xxx-small"></lightning-button>
+            <template lwc:if={block2}>
+                <div>
+                    This is the if block
+                </div>
+            </template>
+            <template lwc:elseif={block3}>
+                <div style="background-color: red; height:100px; color:aliceblue">
+                    This is the elseif block
+                </div>
+            </template>
+            <template lwc:else>
+               <div>This is the else block</div>
+            </template>
+        </div>
+    </lightning-card>
+
 </template>

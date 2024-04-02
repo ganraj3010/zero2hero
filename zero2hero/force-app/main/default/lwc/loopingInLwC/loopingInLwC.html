@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="for:each demo">
+        <div class="slds-var-m-around_medium">
+            <ul class="slds-has-dividers_around-space">
+                <template for:each={carList} for:item="car">
+                    <li key={car} class="slds-item">{car}</li>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+    <lightning-card title="iterator demo">
+        <div class="slds-var-m-around_medium">
+            <ul class="slds-has-dividers_around-space">
+                <template iterator:user={users}>
+                    <template if:true={user.first}>
+                        <li key={user.value.id} class="slds-item"><strong>FirstName  LastName  Age</strong></li>
+                    </template>
+                    <li key={user.value.id} class="slds-item">{user.value.FirstName}  {user.value.LastName}  {user.value.Age}</li>
+                    <template if:true={user.last}>
+                        <li key={user.value.id} class="slds-item"><strong>End Of File</strong></li>
+                    </template>
+                </template>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
