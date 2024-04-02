@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Accessibility">
+        <div class="slds-var-m-around_medium">
+            <p class="ptag">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae reprehenderit animi quasi, inventore, nobis odit provident pariatur eius laboriosam facilis molestiae illo minus, repellat corrupti omnis itaque dolorem veritatis facere.
+            </p>
+            <p class="newptag" lwc:dom="manual"></p>
+            <p slot="footer">
+                <lightning-button label="Click me" variant="brand" onclick={handleClick} class="slds-var-m-right_medium"></lightning-button>
+                <lightning-button label="Set title" variant="brand" onclick={addTitle} class="slds-var-m-right_medium"></lightning-button>
+                <lightning-button label="Add manualy" variant="brand" onclick={addManualy} class="slds-var-m-right_medium"></lightning-button>
+            </p>
+        </div>
+    </lightning-card>
+</template>
