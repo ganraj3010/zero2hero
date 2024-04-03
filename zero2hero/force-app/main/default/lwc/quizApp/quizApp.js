@@ -4,7 +4,7 @@ export default class QuizApp extends LightningElement {
     @track
     questions = [
         {
-            "Id": 1,
+            "Id": "Question_1",
             "Question": "What does LWC stand for?",
             "Options": [
                 { "label": "Lightning Web Components", "value": "A" },
@@ -15,7 +15,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "A"
         },
         {
-            "Id": 2,
+            "Id": "Question_2",
             "Question": "Which programming language is primarily used to develop LWC?",
             "Options": [
                 { "label": "Java", "value": "A" },
@@ -26,7 +26,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "B"
         },
         {
-            "Id": 3,
+            "Id": "Question_3",
             "Question": "In LWC, what file extension is used for the component markup?",
             "Options": [
                 { "label": ".html", "value": "A" },
@@ -37,7 +37,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "A"
         },
         {
-            "Id": 4,
+            "Id": "Question_4",
             "Question": "Which of the following is true about LWC?",
             "Options": [
                 { "label": "It's an open-source framework", "value": "A" },
@@ -48,7 +48,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "A"
         },
         {
-            "Id": 5,
+            "Id": "Question_5",
             "Question": "What is the recommended way to communicate between components in LWC?",
             "Options": [
                 { "label": "Global variables", "value": "A" },
@@ -59,7 +59,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "B"
         },
         {
-            "Id": 6,
+            "Id": "Question_6",
             "Question": "Which of the following is NOT a lifecycle hook in LWC?",
             "Options": [
                 { "label": "connectedCallback", "value": "A" },
@@ -70,7 +70,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "D"
         },
         {
-            "Id": 7,
+            "Id": "Question_7",
             "Question": "What is the main benefit of using LWC?",
             "Options": [
                 { "label": "Increased performance", "value": "A" },
@@ -81,7 +81,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "A"
         },
         {
-            "Id": 8,
+            "Id": "Question_8",
             "Question": "Which tool is used to create and manage LWC projects?",
             "Options": [
                 { "label": "Visual Studio Code", "value": "A" },
@@ -92,7 +92,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "A"
         },
         {
-            "Id": 9,
+            "Id": "Question_9",
             "Question": "What is the purpose of the @wire decorator in LWC?",
             "Options": [
                 { "label": "Styling components", "value": "A" },
@@ -103,7 +103,7 @@ export default class QuizApp extends LightningElement {
             "correctAns": "C"
         },
         {
-            "Id": 10,
+            "Id": "Question_10",
             "Question": "Which of the following is NOT a core concept of LWC?",
             "Options": [
                 { "label": "Encapsulation", "value": "A" },
@@ -125,33 +125,46 @@ export default class QuizApp extends LightningElement {
     get allSelected() {
         return Object.keys(this.selectedOptions).length !== this.questions.length
     }
-    
+
     handleReset() {
         this.selectedOptions = {}
         let radioGroup = this.template.querySelectorAll('lightning-radio-group')
         radioGroup.forEach(element => {
             element.value = null
         });
+        this.questions.forEach(element => {
+            let ele = this.template.querySelector("."+element.Id);
+            ele.style.border = "none"
+        });
         this.isSubmit = false
         this.questions = this.shuffleArray(this.questions)
     }
-    
+
     shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
-      }
+    }
 
     handleSubmit(event) {
         event.preventDefault()
         let correctAnsList = this.questions.filter(question => question.correctAns === this.selectedOptions[question.Id])
         this.correctAnsCount = correctAnsList.length;
         this.isSubmit = true
+        this.questions.forEach(element => {
+            let ele = this.template.querySelector("."+element.Id);
+            if(!correctAnsList.includes(element)){
+                ele.style.border = "3px solid red"
+            }else{
+                ele.style.border = "3px solid green"
+            }
+        });
+        
     }
 
-    get msgCss(){
-         return `slds-var-m-bottom_medium slds-text-heading_medium ${this.correctAnsCount === this.questions.length ? 'slds-text-color_success' : 'slds-text-color_error'}`
-            }
+    get msgCss() {
+        return `slds-var-m-bottom_medium slds-text-heading_medium ${this.correctAnsCount === this.questions.length ? 'slds-text-color_success' : 'slds-text-color_error'}`
+    }
 }

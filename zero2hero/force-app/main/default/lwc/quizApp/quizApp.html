@@ -1,19 +1,16 @@
 <template>
     <form>
         <lightning-card title="Quiz App">
-           <div class="slds-var-m-around_medium">
+            <div class="slds-var-m-around_medium">
                 <ul class="slds-has-dividers_around-space" title="Questions">
                     <template for:each={questions} for:item="question" for:index="index">
                         <li class="slds-item" key={question.Id}>
-                            <div>
+                            <div class={question.Id}>
                                 <strong>{question.Id}. {question.Question}</strong>
                             </div>
                             <div>
-                                <lightning-radio-group  name={question.Id} 
-                                                        options={question.Options} 
-                                                        required 
-                                                        type="radio"
-                                                        onchange={hadleChoice}>
+                                <lightning-radio-group name={question.Id} options={question.Options} required
+                                    type="radio" onchange={hadleChoice}>
                                 </lightning-radio-group>
                             </div>
                         </li>
@@ -26,7 +23,8 @@
                         You have answer {correctAnsCount} correct out of {questions.length}
                     </div>
                 </template>
-                <lightning-button class="slds-var-m-right_medium" type="submit" variant="brand" label="Submit" onclick={handleSubmit} disabled={allSelected}>
+                <lightning-button class="slds-var-m-right_medium" type="submit" variant="brand" label="Submit"
+                    onclick={handleSubmit} disabled={allSelected}>
                 </lightning-button>
                 <lightning-button variant="brand" label="Reset" onclick={handleReset}>
                 </lightning-button>
