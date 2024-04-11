@@ -1,0 +1,29 @@
+<template>
+    <lightning-card title="Parent to Child on action">
+        <div class="slds-var-m-around_medium">
+            Progress by querySelector value
+            <lightning-progress-bar value={progressValue}  size="large"></lightning-progress-bar>
+        <div class="slds-var-m-bottom_small"></div>
+            Progress by querySelector action
+            <lightning-progress-bar value={progressValueAction} size="large"></lightning-progress-bar>
+        </div>
+    </lightning-card>
+    <lightning-card title="Parent to Child Primitive">
+        <div class="slds-var-m-around_medium">
+            {valueFromParent}
+        </div>
+    </lightning-card>
+    <div class="slds-var-m-around_small"></div>
+    <lightning-card title="Parent to Child Non Primitive">
+        <div class="slds-var-m-around_medium">
+            <lightning-carousel>
+                <template for:each={crausalDetails} for:item="img">
+                    <lightning-carousel-image key={img.header} src={img.src} header={img.header}
+                        description={img.description}>
+                    </lightning-carousel-image>
+                </template>
+            </lightning-carousel>
+        </div>
+    </lightning-card>
+    <div class="slds-var-m-around_small"></div>
+</template>
