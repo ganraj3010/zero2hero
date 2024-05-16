@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Slot Parent">
+        <div class="slds-var-m-around_medium">
+            <c-slot-child-demo cardtitle="UnNamed Slot">
+                <p>Hi I am P tag from Parent</p>
+            </c-slot-child-demo>
+        </div>
+        <div class="slds-var-m-around_medium">
+            <c-slot-child-demo cardtitle="Named Slot">
+                <p slot="First">I am First</p>
+                <p slot="Second">I am Second</p>
+            </c-slot-child-demo>
+        </div>
+    </lightning-card>
+</template>

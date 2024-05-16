@@ -1,6 +1,8 @@
 import { LightningElement } from 'lwc';
 
 export default class P2cParentComponent extends LightningElement {
+    message;
+    callchild = false;
     crausalData = [{
             src: "https://developer.salesforce.com/path/to/carousel-01.jpg",
             header: "First card",
@@ -18,5 +20,14 @@ export default class P2cParentComponent extends LightningElement {
     hadleProgress(event){
         this.template.querySelector("c-p2c-child-component").progressValue = event.target.value
         this.template.querySelector("c-p2c-child-component").handleAction(event)
+    }
+    hadleMessage(event){
+        this.message = event.target.value;
+        console.log(this.message);
+        
+    }
+    handlesubmit(event){
+        this.callchild = true;
+        console.log(this.callchild);
     }
 }
